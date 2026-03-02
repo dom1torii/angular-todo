@@ -77,16 +77,26 @@ import { TaskData } from '../app/app'
       transition: all 0.1s;
     }
 
+    button.task-complete:hover {
+      box-shadow: 
+        0 0 5px rgba(46, 139, 87, 0.5),
+        0 0 10px rgba(46, 139, 87, 0.5),
+        0 0 20px rgba(46, 139, 87, 0.5);
+    }
+
+    button.task-delete:hover {
+      box-shadow: 
+        0 0 5px rgba(205, 92, 92, 0.5),
+        0 0 10px rgba(205, 92, 92, 0.5),
+        0 0 20px rgba(205, 92, 92, 0.5);
+    }
+
     button.task-delete {
       background-color: indianred;
     }
 
     button.task-complete {
       background-color: seagreen;
-    }
-
-    button:hover {
-      filter: grayscale(50%)
     }
   `
 })

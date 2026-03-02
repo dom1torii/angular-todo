@@ -27,12 +27,37 @@
   flex-wrap: wrap;
 }
 
+.options-label {
+  font-size: 20px;
+  border-right: 1px solid rgba(255, 255, 255, 0.3);
+  padding-right: 20px;
+  margin-right: 10px;
+}
+
 .options > form {
   display: flex;
   align-items: center;
   flex-direction: row;
   gap: 10px;
   flex-wrap: wrap;
+}
+
+@media (max-width: 600px) {
+  .options {
+    justify-content: center;
+  }
+
+  .options > form {
+    justify-content: center;
+  }
+
+  .options-label {
+    width: 100%;
+    border: none;
+    text-align: center;
+    padding-right: 0px;
+    margin-right: 0px;
+  }
 }
 
 input[type="text"] {
@@ -53,14 +78,19 @@ input[type="text"]:focus {
   border: none;
   border-radius: 5px;
   background-color: seagreen;
-  font-size: 20px;
+  font-size: 16px;
   color: white;
   cursor: pointer;
-  transition: all 0.1s;
+  transition: all 0.15s;
+  padding-inline: 15px;
+  padding-block: 5px;
 }
 
-button:hover {
-  filter: grayscale(50%)
+.options > button:hover {
+  box-shadow: 
+    0 0 5px rgba(46, 139, 87, 0.5),
+    0 0 10px rgba(46, 139, 87, 0.5),
+    0 0 20px rgba(46, 139, 87, 0.5);
 }
 
 .list {

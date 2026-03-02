@@ -1,10 +1,13 @@
 <main class="main">
   <div class="content">
     <div class="options">
+      <div class="options-label">
+        Add task
+      </div>
       <form>
         <label>
-          Task:
-          <input type="text" [formField]="taskForm.task" />
+          Label:
+          <input type="text" placeholder="e.g do the laundry" [formField]="taskForm.task" />
         </label>
         <label>
           Important:
