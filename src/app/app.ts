@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, effect } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { form, FormField } from '@angular/forms/signals';
 
@@ -26,10 +26,43 @@ export class App {
 
   taskForm = form(this.taskModel);
 
-  tasks = signal<TaskData[]>([])
-  completed = signal<TaskData[]>([])
+  tasks = signal<TaskData[]>(this.loadTasks())
+  completed = signal<TaskData[]>(this.loadCompleted())
 
-  private nextTaskId = 1;
+  private nextTaskId = this.loadNextTaskId();
+
+  constructor() {
+    effect(() => {
+      if (typeof window !== 'undefined' && window.localStorage) {
+        localStorage.setItem('tasks', JSON.stringify(this.tasks()))
+        localStorage.setItem('completed', JSON.stringify(this.completed()))
+      }
+    });
+  }
+
+  loadTasks(): TaskData[] {
+    if (typeof window !== 'undefined' && window.localStorage) {
+      const storedTasks = localStorage.getItem('tasks');
+      return storedTasks ? JSON.parse(storedTasks) : []
+    }
+    return []
+  }
+
+  loadCompleted(): TaskData[] {
+    if (typeof window !== 'undefined' && window.localStorage) {
+      const storedCompleted = localStorage.getItem('completed');
+      return storedCompleted ? JSON.parse(storedCompleted) : []
+    }
+    return []
+  }
+
+  loadNextTaskId(): number {
+    if (typeof window !== 'undefined' && window.localStorage) {
+      const storedId = localStorage.getItem('nextTaskId');
+      return storedId ? Number(storedId) : 1
+    }
+    return 1
+  }
 
   resetForm() {
     this.taskForm.task().value.set("")
