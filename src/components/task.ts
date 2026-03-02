@@ -93,10 +93,12 @@ import { TaskData } from '../app/app'
 
     button.task-delete {
       background-color: indianred;
+      color: #f3d6d6;
     }
 
     button.task-complete {
       background-color: seagreen;
+      color: #cbe2d5;
     }
   `
 })

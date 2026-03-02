@@ -79,7 +79,7 @@ input[type="text"]:focus {
   border-radius: 5px;
   background-color: seagreen;
   font-size: 16px;
-  color: white;
+  color: #cbe2d5;
   cursor: pointer;
   transition: all 0.15s;
   padding-inline: 15px;
